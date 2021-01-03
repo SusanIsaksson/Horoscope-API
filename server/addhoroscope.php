@@ -8,49 +8,51 @@ try {
 
         if($_SERVER['REQUEST_METHOD'] === "POST") {
 
-            //key monthDate set in the request-body
-            if(isset($_POST["birthDate"])) {
-
+            //key monthDate set in the request-body *** ($_POST["month"]) && ($_POST["date"])
+            //if(isset($_POST["birthDate"])) 
+            if(isset($_POST["month"]) && ($_POST["day"]) {
                 //saving value of key 'monthDate' from request into key 'monthDate' in $_SESSION
-                $_SESSION["birthDate"] = serialize($_POST["birthDate"]);
+                //$_SESSION["birthDate"] = serialize($_POST["birthDate"]);
+            }
 
                 //sending succes (true) back to client
+                //***ändrat "mm" = "month" och "dd" = "day" + if nedan till elseif
                 echo json_encode(true);
                  
-                if (("mm" == 12 && "dd" >= 22) || ("mm" == 01 && "dd" <=20)) {
+                if (("month" == 12 && "day" >= 22) || ("month" == 01 && "day" <=20)) {
                     return "Stenbock ";
                 }
-                if (("mm" == 01 && "dd" >= 21) || ("mm" == 02 && "dd" <=18)) {
+                elseif (("month" == 01 && "day" >= 21) || ("month" == 02 && "day" <=18)) {
                     return "Vattuman";
                 }
-                if (("mm" == 02 && "dd" >= 19) || ("mm" == 03 && "dd" <=20)) {
+                elseif (("month" == 02 && "day" >= 19) || ("month" == 03 && "day" <=20)) {
                     return "Fiskar";
                 }
-                if (("mm" == 03 && "dd" >= 21) || ("mm" == 04 && "dd" <=20)) {
+                elseif (("month" == 03 && "day" >= 21) || ("month" == 04 && "day" <=20)) {
                     return "Vädur";
                 }
-                if (("mm" == 04 && "dd" >= 21) || ("mm" == 05 && "dd" <=21)) {
+                elseif (("month" == 04 && "day" >= 21) || ("month" == 05 && "day" <=21)) {
                     return "Oxe";
                 }
-                if (("mm" == 05 && "dd" >= 22) || ("mm" == 06 && "dd" <=21)) {
+                elseif (("month" == 05 && "day" >= 22) || ("month" == 06 && "day" <=21)) {
                     return "Tvillingar";
                 }
-                if (("mm" == 06 && "dd" >= 22) || ("mm" == 07 && "dd" <=22)) {
+                elseif (("month" == 06 && "day" >= 22) || ("month" == 07 && "day" <=22)) {
                     return "Kräfta";
                 }
-                if (("mm" == 07 && "dd" >= 23) || ("mm" == 08 && "dd" <=23)) {
+                elseif (("month" == 07 && "day" >= 23) || ("month" == 08 && "day" <=23)) {
                     return "Lejon";
                 }
-                if (("mm" == 08 && "dd" >= 24) || ("mm" == 09 && "dd" <=22)) {
+                elseif (("month" == 08 && "day" >= 24) || ("month" == 09 && "day" <=22)) {
                     return "Jungfru";
                 }
-                if (("mm" == 09 && "dd" >= 23) || ("mm" == 10 && "dd" <=23)) {
+                elseif (("month" == 09 && "day" >= 23) || ("month" == 10 && "day" <=23)) {
                     return "Våg";
                 }
-                if (("mm" == 10 && "dd" >= 24) || ("mm" == 11 && "dd" <=22)) {
+                elseif (("month" == 10 && "day" >= 24) || ("month" == 11 && "day" <=22)) {
                     return "Skorpion";
                 }
-                if (("mm" == 11 && "dd" >= 23) || ("mm" == 12 && "dd" <=21)) {
+                elseif (("month" == 11 && "day" >= 23) || ("month" == 12 && "day" <=21)) {
                     return "Skytt";
                 }
 
