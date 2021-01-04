@@ -9,10 +9,11 @@ try {
         if($_SERVER['REQUEST_METHOD'] === "POST") {
 
             //key monthDate set in the request-body *** ($_POST["month"]) && ($_POST["date"])
-            //if(isset($_POST["birthDate"])) 
-            if(isset($_POST["month"]) && ($_POST["day"]) {
+            if(isset($_POST["birthDate"])) 
+            // if(isset($_POST["month"]) && ($_POST["day"]) {
+            
                 //saving value of key 'monthDate' from request into key 'monthDate' in $_SESSION
-                //$_SESSION["birthDate"] = serialize($_POST["birthDate"]);
+            $_SESSION["birthDate"] = serialize($_POST["birthDate"]);
             }
 
                 //sending succes (true) back to client
