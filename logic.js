@@ -1,84 +1,106 @@
 window.addEventListener("load", initSite)
-document.getElementById("saveBtn").addEventListener("click", setBirthday);
+document.getElementById("saveBtn").addEventListener("click", saveZodiac);
 document.getElementById("updateBtn").addEventListener("click", updateZodiac);
 document.getElementById("deleteBtn").addEventListener("click", deleteZodiac); 
 
-//const birthdayToSave = document.getElementById("birthdayInput")
-
-
-async function initSite() {}
+async function initSite() {
+    getZodiac()
+}
 
 //POST
-async function setBirthday() {
+async function saveZodiac() {
 
-    const birthdayToSave = document.getElementById("birthdayInput").value 
+    let monthInput
+    let dayInput
 
-    const input = document.getElementById("birthdayInput").value;
-        const month = input[5]+input[6]
-        const day = input[8]+input[9]
-
-        console.log("månad = " + month + " dag = " + day)
-
-    if(!birthdayToSave.length) {
+    const input = document.getElementById("dateInput").value;
+    const d = new Date(input);
+    if (!!d.valueOf()) {
+        monthInput = d.getMonth() + 1;
+        dayInput = d.getDate();
+    }
+   
+    if(!input.length) {
         console.log("Du måste fylla i ett födelsedatum")
         return
     }
 
     const body = new FormData()
-    body.set("birthDate", birthdayToSave)
+    body.set("month", monthInput)
+    body.set("day", dayInput)
 
-    const collectedBirthday = await makeRequest("/server/addhoroscope.php", "POST", body)
+    console.log(input)
+
+    const collectedZodiac = await makeRequest("./server/addhoroscope.php", "POST", body)
+    console.log(collectedZodiac)
+    getZodiac()
     
-    console.log(collectedBirthday)
 
 }
 
 //GET
 async function getZodiac() {
-    let viewContainer = document.getElementById("yourZodiac")
 
-    let collectedBirthday = await makeRequest("/server/viewhoroscope.php", "GET")
+    const zodiacInput = document.getElementById("yourZodiac")
+    const collectedZodiac = await makeRequest("./server/viewhoroscope.php", "GET")
+    
+    console.log(collectedZodiac)
 
-    console.log(collectedBirthday)
-
-    if(!collectedBirthday) {
-        viewContainer.innerText = "Ingen födelsedatum är sparat..."
-        return 
-    }
-
-    viewContainer.innerText = collectedBirthday
-}
+    //zodiacInput.innerText = collectedZodiac
+}    
 
 //POST
-async function updateZodiac() {
+async function updateZodiac () {
 
-    console.log("TEST AV UPDATE")
+    let monthInput
+    let dayInput
 
+    const input = document.getElementById("dateInput").value;
+    const d = new Date(input);
+    if (!!d.valueOf()) {
+        monthInput = d.getMonth() + 1;
+        dayInput = d.getDate();
+    }
+    if(!monthInput || !dayInput) {
+        console.log("Skriv in din födelsedag")
+        return
+    }
+
+    const body = new FormData()
+    body.set("month", monthInput)
+    body.set("day", dayInput)
+    
+    const collectedZodiac = await makeRequest("./server/addhoroscope.php", "POST", body)
+    console.log(collectedZodiac)
+    getZodiac()
 }
 
 //DELETE
 async function deleteZodiac() {
 
-    console.log("TEST AV DELETE")
+    const deleteRequest = await makeRequest("./server/deletehoroscope.php", "DELETE")  
+   
+    if (deleteRequest) {
 
+        document.getElementById("saveBtn").disabled = false
+    }
+    console.log(deleteRequest)
+    getZodiac()
+    
 }
 
 
 async function makeRequest(path, method, body) {
-
     try {
         const response = await fetch(path, {
             method,
             body
         })
         console.log(response)
-
-        if(response.status !=200) {
-            throw new Error(response.statusText, response.status)
-        }
-        return await response.json()
+        return response.json()
 
     } catch(err) {
+        //return err;
         console.log("Fel vid fetch", err)
     }
 }
