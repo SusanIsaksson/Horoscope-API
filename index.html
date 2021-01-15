@@ -5,25 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script defer src="logic.js"></script>
-    
+       
     <title>Horoscope-API</title>
 </head>
-<body>
-    <h1>Vilket är ditt stjärntecken?</h1>
-    <h3>Fyll i ditt födelsenummer här:</h3>
-        <div>
-            <input name="inputDate" id="dateInput" type="date">
-            
-        </div>
+<body style="background-color: rgba(252, 132, 252, 0.445);">
+    <div>
+    <header>
+        <img src="./image/astrology.jfif" alt="" style="height: 198px;width:auto;">
+    </header>
+    </div>
+
+    <div>
+        <h1 style="font-family: trebuchet MS; ">Vilket är ditt stjärntecken?</h1> 
+        <h4 style="font-family: trebuchet MS; ">Fyll i ditt födelsenummer här:</h4>
+    
+    </div>
+    
+    <div>
+        <input name="inputDate" id="dateInput" type="date" style="height: 20px;">
+    </div>
    
-        <div>
-            <button id="saveBtn">Spara</button>
-            <button id="updateBtn">Uppdatera</button>
-            <button id="deleteBtn">Delete</button>
-        </div>
-        <div>
-            <h1 id="yourZodiac"></h1>
-        </div>
+    <div>
+        <p></p>
+        <button id="saveBtn" style="height: 20px; width:60px; background-color: purple; color: white;">Spara</button>
+        <button id="updateBtn" style="height: 20px; width:80px; background-color: purple; color: white;">Uppdatera</button>
+        <button id="deleteBtn" style="height: 20px; width:60px; background-color: purple; color: white;">Delete</button>
+    </div>
+    
+    <div>
+        <p></p>
+        <p style="font-family:trebuchet ms; font-size: 20px;">Ditt stjärntecken är:</p>
+        <h1 id="yourZodiac" style="font-family:trebuchet ms; "></h1>
+    </div>
+
+    <div>
+        <footer class="footer">20210115 @Susan Isaksson</footer>
+    </div>
     
 </body>
 </html>
