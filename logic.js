@@ -34,7 +34,8 @@ async function saveZodiac() {
     const collectedZodiac = await makeRequest("./server/addhoroscope.php", "POST", body)
     console.log(collectedZodiac)
     getZodiac()
-    
+
+ 
 
 }
 
@@ -46,7 +47,7 @@ async function getZodiac() {
     
     console.log(collectedZodiac)
 
-    //zodiacInput.innerText = collectedZodiac
+    zodiacInput.innerText = collectedZodiac
 }    
 
 //POST
@@ -78,13 +79,13 @@ async function updateZodiac () {
 //DELETE
 async function deleteZodiac() {
 
-    const deleteRequest = await makeRequest("./server/deletehoroscope.php", "DELETE")  
-   
-    if (deleteRequest) {
+    const collectedZodiac = await makeRequest("./server/deletehoroscope.php", "DELETE")  
 
+    /* if (deleteRequest) {
         document.getElementById("saveBtn").disabled = false
-    }
-    console.log(deleteRequest)
+    } */
+
+    console.log(collectedZodiac)
     getZodiac()
     
 }
