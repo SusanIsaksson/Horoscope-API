@@ -13,6 +13,7 @@ try {
                 exit;
 
             } else {
+                //denna skriver ut i consolen + output när inget datum finns sparat.
                 echo json_encode("No date is saved...");
                 exit;
             } 
